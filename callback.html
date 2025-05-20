@@ -5,70 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authentication Complete | Xero Receipt Scanner</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        /* CSS styles here */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
         }
-        
         .callback-container {
             text-align: center;
-            background-color: white;
-            padding: 50px;
+            padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             max-width: 500px;
-            width: 90%;
         }
-        
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background-color: #4CAF50;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            color: white;
-            font-size: 40px;
-        }
-        
         h1 {
             color: #1a3d66;
             margin-bottom: 20px;
         }
-        
         p {
             margin-bottom: 30px;
-            color: #666;
-            font-size: 1.1rem;
+            color: #555;
         }
-        
-        .close-button {
-            background-color: #2cb9ff;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .close-button:hover {
-            background-color: #1a8ed1;
+        .success-icon {
+            color: #4CAF50;
+            font-size: 48px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -77,14 +43,16 @@
         <div class="success-icon">✓</div>
         <h1>Authentication Successful</h1>
         <p>Your Xero account has been successfully connected to Xero Receipt Scanner. You may now close this window and return to the application.</p>
-        <button class="close-button" onclick="window.close()">Close Window</button>
     </div>
     
     <script>
-        // Automatically close this window after 10 seconds
-        setTimeout(() => {
-            window.close();
-        }, 10000);
+        // This script will capture OAuth parameters for debugging purposes
+        // In production, you would handle these params appropriately
+        const urlParams = new URLSearchParams(window.location.search);
+        console.log('Auth Code:', urlParams.get('code'));
+        console.log('State:', urlParams.get('state'));
+        
+        // For n8n integration, no action needed here as n8n handles the token exchange
     </script>
 </body>
 </html>
